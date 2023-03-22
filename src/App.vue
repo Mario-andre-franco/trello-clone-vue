@@ -5,28 +5,34 @@
       <div class="lane">
         <h2 class="lane-title">Backlog</h2>
           <Container group-name="trello">
-            <Draggable>
-              <div class="card" v-for="card in cards.backlog" :key="card.id">{{ card.text }}</div>
+            <Draggable v-for="card in cards.dev" :key="card.id">
+              <div class="card">{{ card.text }}</div>
             </Draggable>
           </Container>
       </div>
       <div class="lane">
         <h2 class="lane-title">Dev</h2>
-        <VueDraggableNext group-name="trello">
-            <div class="card" v-for="card in cards.dev" :key="card.id">{{ card.text }}</div>
-        </VueDraggableNext>
+        <Container group-name="trello">
+            <Draggable v-for="card in cards.dev" :key="card.id">
+              <div class="card">{{ card.text }}</div>
+            </Draggable>
+          </Container>
       </div>
       <div class="lane">
         <h2 class="lane-title">Testes</h2>
-        <VueDraggableNext group-name="trello">
-            <div class="card" v-for="card in cards.testes" :key="card.id">{{ card.text }}</div>
-        </VueDraggableNext>
+        <Container group-name="trello">
+            <Draggable v-for="card in cards.dev" :key="card.id"> 
+              <div class="card">{{ card.text }}</div>
+            </Draggable>
+          </Container>
       </div>
       <div class="lane">
         <h2 class="lane-title">Fechado</h2>
-        <VueDraggableNext group-name="trello">
-            <div class="card" v-for="card in cards.fechados" :key="card.id">{{ card.text }}</div>
-        </VueDraggableNext>
+        <Container group-name="trello">
+            <Draggable v-for="card in cards.dev" :key="card.id">
+              <div class="card">{{ card.text }}</div>
+            </Draggable>
+          </Container>
       </div>
 
     </div>
