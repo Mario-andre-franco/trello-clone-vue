@@ -4,7 +4,7 @@
     <div class="board">
       <div class="lane">
         <h2 class="lane-title">Backlog</h2>
-          <Container group-name="trello">
+          <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
             <Draggable v-for="card in cards.dev" :key="card.id">
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -12,7 +12,7 @@
       </div>
       <div class="lane">
         <h2 class="lane-title">Dev</h2>
-        <Container group-name="trello">
+        <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
             <Draggable v-for="card in cards.dev" :key="card.id">
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -20,7 +20,7 @@
       </div>
       <div class="lane">
         <h2 class="lane-title">Testes</h2>
-        <Container group-name="trello">
+        <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
             <Draggable v-for="card in cards.dev" :key="card.id"> 
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -28,7 +28,7 @@
       </div>
       <div class="lane">
         <h2 class="lane-title">Fechado</h2>
-        <Container group-name="trello">
+        <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
             <Draggable v-for="card in cards.dev" :key="card.id">
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -61,7 +61,7 @@ export default {
     }
   }),
   methods: {
-    handleDropStart(dragResult) {
+    handleDragStart(dragResult) {
       console.log(dragResult)
 
     },
