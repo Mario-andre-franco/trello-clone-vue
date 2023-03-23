@@ -4,7 +4,11 @@
     <div class="board">
       <div class="lane">
         <h2 class="lane-title">Backlog</h2>
-          <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
+          <Container group-name="trello" 
+          @drag-start="handleDragStart('backlog', $event)" 
+          @drop="handleDrop"
+          :get-child-payload="getChildPayload">
+
             <Draggable v-for="card in cards.dev" :key="card.id">
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -12,7 +16,10 @@
       </div>
       <div class="lane">
         <h2 class="lane-title">Dev</h2>
-        <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
+        <Container group-name="trello" 
+        @drag-start="handleDragStart('dev', $event)" 
+        @drop="handleDrop"
+        :get-child-payload="getChildPayload">
             <Draggable v-for="card in cards.dev" :key="card.id">
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -20,7 +27,10 @@
       </div>
       <div class="lane">
         <h2 class="lane-title">Testes</h2>
-        <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
+        <Container group-name="trello" 
+        @drag-start="handleDragStart('testes', $event)" 
+        @drop="handleDrop"
+        :get-child-payload="getChildPayload">
             <Draggable v-for="card in cards.dev" :key="card.id"> 
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -28,7 +38,10 @@
       </div>
       <div class="lane">
         <h2 class="lane-title">Fechado</h2>
-        <Container group-name="trello" @drag-start="handleDragStart" @drop="handleDrop">
+        <Container group-name="trello" 
+        @drag-start="handleDragStart('fechados', $event)" 
+        @drop="handleDrop"
+        :get-child-payload="getChildPayload">
             <Draggable v-for="card in cards.dev" :key="card.id">
               <div class="card">{{ card.text }}</div>
             </Draggable>
@@ -58,15 +71,32 @@ export default {
       dev: initialCards.dev,
       testes: initialCards.testes,
       fechados: []
+    },
+    dragginCard: {
+      lane: '',
+      index: -1,
+      cardData: {},
     }
   }),
   methods: {
-    handleDragStart(dragResult) {
-      console.log(dragResult)
+    handleDragStart(lane,dragResult) {
+      const { payload, isSource } = dragResult;
 
+      if(isSource) {
+        this.dragginCard = {
+          lane,
+          index: payload.index,
+          cardData: {
+            ...this.cards[lane][payload.index]
+          }
+        }
+      }
     },
-    handleDrop() {
-
+    handleDrop() {},
+    getChildPayload(index) {
+      return {
+        index,
+      }
     }
   }
 }
