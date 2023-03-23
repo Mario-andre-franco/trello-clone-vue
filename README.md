@@ -1,24 +1,19 @@
-# trello-vue-clone
+ # Criação de clone do Trello
 
-## Project setup
-```
-npm install
-```
+  Utilizando Vue.js e lib vue-smooth-dnd
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+  ## Referência
 
-### Lints and fixes files
-```
-npm run lint
-```
+  - [Vue-smooth](https://www.npmjs.com/package/vue-smooth-dnd)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+  ## Live Demo (Vercel)
+  - https://trello-clone-vue.vercel.app/
+
+  ## Stack utilizada
+
+  <p>
+    <a href="https://skillicons.dev">
+      <img src="https://skillicons.dev/icons?i=javascript,nodejs,vue,git,vercel,vscode&theme=light" />
+    </a>
+  </p>
